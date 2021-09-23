@@ -13,7 +13,7 @@ class DashboardController extends Controller
 
         $shop = Auth::user();
 
-        // API Ref:
+        // API Ref: https://shopify.dev/api/admin/rest/reference/store-properties/shop#show-2021-07
         $storeDetails = $shop->api()->rest('GET', '/admin/shop.json')['body']['shop'];
 
         $registeredAddress = implode(', ', array_filter([
@@ -24,7 +24,7 @@ class DashboardController extends Controller
             $storeDetails['country_name'],
         ]));
 
-        // API Ref: 
+        // API Ref: https://shopify.dev/api/admin/rest/reference/products/product#show-2021-07
         $selectedProduct = $shop->api()->rest('GET', '/admin/products/7053016400038.json')['body']['product'];
 
         // API Ref: https://shopify.dev/api/admin/rest/reference/orders/order#show-2021-07
